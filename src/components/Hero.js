@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react'; // Removed unused useEffect
 import { motion, useScroll, useTransform } from 'framer-motion';
 import '../styles/hero.css';
 
 // Import your profile image
-import profileImage from '../assets/images/profile.jpg'; // Make sure the filename matches exactly
+import profileImage from '../assets/images/profile.jpg';
 
 const Hero = () => {
   const containerRef = useRef(null);

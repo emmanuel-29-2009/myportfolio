@@ -15,7 +15,7 @@ const Testimonials = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0]);
+  // Removed unused 'opacity' variable
 
   const testimonials = [
     {
