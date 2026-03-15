@@ -245,10 +245,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Prevent any fading on all devices */
-  opacity: 1 !important;
-  visibility: visible !important;
-  transition: none !important;
 }
 
 .image-container {
@@ -493,23 +489,41 @@
   }
 }
 
-/* ===== AGGRESSIVE MOBILE FIXES ===== */
+/* ===== MOBILE FIXES - Keep animations, remove scroll fading ===== */
 
-/* Fix 1: Disable all scroll effects on mobile */
+/* Fix 1: Remove only the scroll fading effect on mobile */
 @media (max-width: 968px) {
+  /* This targets the scroll-based opacity and transform */
   .hero-image-wrapper {
     transform: none !important;
+    /* Only override the scroll-based opacity, keep other animations */
     opacity: 1 !important;
-    transition: none !important;
+  }
+  
+  /* Keep all other animations (frame pulse, particles, badge spin) */
+  .image-frame {
+    animation: framePulse 3s ease-in-out infinite !important;
+  }
+  
+  .particle {
+    animation: particleFloat 4s ease-in-out infinite !important;
+  }
+  
+  .experience-badge {
+    animation: spin 20s linear infinite !important;
+  }
+  
+  .badge-content {
+    animation: none; /* Keep badge content static as before */
   }
 }
 
-/* Fix 2: Major padding increases for navbar */
+/* Fix 2: Major padding increases for navbar (keep all animations) */
 @media (max-width: 968px) {
   .hero-section {
-    padding: 140px 2rem 3rem 2rem !important;
-    align-items: flex-start !important;
-    min-height: auto !important;
+    padding: 140px 2rem 3rem 2rem;
+    align-items: flex-start;
+    min-height: auto;
   }
   
   .hero-container {
@@ -521,7 +535,6 @@
   .hero-content {
     max-width: 100%;
     text-align: center;
-    padding-top: 0;
   }
   
   .hero-badge {
@@ -557,12 +570,21 @@
     height: 400px;
     margin: 0 auto;
   }
+  
+  /* Keep all image animations */
+  .image-frame {
+    animation: framePulse 3s ease-in-out infinite;
+  }
+  
+  .particle {
+    display: block; /* Keep particles visible */
+  }
 }
 
 /* Fix 3: Medium screens - increased padding */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 180px 1.5rem 3rem 1.5rem !important;
+    padding: 180px 1.5rem 3rem 1.5rem;
   }
   
   .hero-title {
@@ -588,7 +610,7 @@
 /* Fix 4: Small screens - maximum padding */
 @media (max-width: 480px) {
   .hero-section {
-    padding: 220px 1rem 2.5rem 1rem !important;
+    padding: 220px 1rem 2.5rem 1rem;
   }
   
   .hero-title {
@@ -660,6 +682,7 @@
     font-size: 0.9rem;
   }
   
+  /* Only hide particles on very small screens if needed */
   .particle {
     display: none;
   }
@@ -668,7 +691,7 @@
 /* Fix 5: Extra small screens */
 @media (max-width: 360px) {
   .hero-section {
-    padding: 240px 0.8rem 2rem 0.8rem !important;
+    padding: 240px 0.8rem 2rem 0.8rem;
   }
   
   .hero-title {
@@ -699,7 +722,7 @@
 /* Fix 6: Very tall phones */
 @media (max-height: 700px) and (max-width: 480px) {
   .hero-section {
-    padding: 200px 1rem 2rem 1rem !important;
+    padding: 200px 1rem 2rem 1rem;
   }
   
   .image-container {
@@ -712,15 +735,16 @@
   }
 }
 
-/* Fix 7: Ensure image NEVER fades */
+/* Fix 7: Only remove scroll fading, keep all other animations */
 @media (max-width: 968px) {
-  .hero-image-wrapper,
-  .hero-image-wrapper *,
-  .profile-image-wrapper,
-  .profile-image {
-    opacity: 1 !important;
-    transform: none !important;
+  /* This specifically targets the scroll-based transforms */
+  [style*="transform:"] {
     transition: none !important;
-    visibility: visible !important;
+  }
+  
+  /* But keep all animation-based transforms */
+  .image-frame, .particle, .experience-badge {
+    transform: none !important; /* Reset, then let animations apply */
+    animation: inherit !important;
   }
 }
