@@ -748,3 +748,33 @@
     animation: inherit !important;
   }
 }
+/* Add this at the very end of your hero.css file */
+
+/* ===== AGGRESSIVE NAVBAR BLOCKING FIX - ONLY THIS ===== */
+
+/* Fix for all mobile devices */
+@media (max-width: 968px) {
+  .hero-section {
+    padding-top: 160px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 240px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section {
+    padding-top: 280px !important;
+  }
+}
+
+/* Keep everything else exactly as it was */
