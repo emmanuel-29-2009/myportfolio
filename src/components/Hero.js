@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'; // Removed unused useEffect
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import '../styles/hero.css';
 
@@ -12,9 +12,10 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  // Adjusted transforms for better mobile experience
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]); // Reduced movement
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 1]); // Image stays visible
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]); // Less scaling
 
   return (
     <section id="home" ref={containerRef} className="hero-section">
